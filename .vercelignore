@@ -1,0 +1,6 @@
+# Exclude large video files from Vercel deployments.
+# Videos are hosted on Vercel Blob (see scripts/upload-videos.mjs).
+*.webm
+*.mp4
+*.MOV
+public/videos/
