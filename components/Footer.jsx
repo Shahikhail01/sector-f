@@ -54,7 +54,7 @@ export default function Footer() {
             className="flex flex-col gap-3"
           >
             <a
-              href="https://wa.me/"
+              href="https://wa.me/923007010300"
               className="btn-gold text-xs"
               target="_blank"
               rel="noopener noreferrer"

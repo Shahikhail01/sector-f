@@ -21,7 +21,7 @@ export default function WhatsAppFloat() {
       </AnimatePresence>
 
       <a
-        href="https://wa.me/"
+        href="https://wa.me/923007010300"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

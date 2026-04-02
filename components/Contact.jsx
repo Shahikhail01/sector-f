@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CONTACT_INFO = [
-  { icon: '📞', label: 'Phone / WhatsApp', value: '+92 300 0000000' },
-  { icon: '📧', label: 'Email',            value: 'info@sectorfvilla.pk' },
+  { icon: '�', label: 'Contact Person',   value: 'Mohammad Ali Piracha' },
+  { icon: '📞', label: 'Phone / WhatsApp', value: '+92 300 7010300' },
+  { icon: '📞', label: 'Phone / WhatsApp', value: '+60 11 2586 2586' },
+  { icon: '📧', label: 'Email',            value: 'alipiracha@live.com' },
   { icon: '📍', label: 'Location',         value: 'Sector‑F, DHA Phase 1, Islamabad' },
 ];
 
