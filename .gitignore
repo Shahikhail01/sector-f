@@ -10,7 +10,10 @@ node_modules/
 .env.local
 .env*.local
 
-# Videos in public/ are large – served via Vercel Blob in production
-# Copy them locally with: mkdir -p public/videos && cp *.webm public/videos/
+# Large video files – serve via Vercel Blob in production
+# For local dev: mkdir -p public/videos && cp *.webm public/videos/
+*.webm
+*.mp4
+*.MOV
 public/videos/
 
