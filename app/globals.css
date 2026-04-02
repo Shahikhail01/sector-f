@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ────────────────────────────── */
+:root {
+  --gold:        #C5963A;
+  --gold-light:  #E0BC6A;
+  --terra:       #C97A4A;
+  --cream:       #F8F0E3;
+  --dark:        #0D0906;
+  --dark2:       #1A110B;
+  --r:           12px;
+  --ease:        cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ── Base Resets ──────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: rgba(197, 150, 58, 0.28);
+  color: #F8F0E3;
+}
+
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #0D0906; }
+::-webkit-scrollbar-thumb  { background: #C5963A; border-radius: 3px; }
+
+/* ── Typography ───────────────────────────────────────── */
+.font-serif { font-family: var(--font-cormorant), Georgia, serif; }
+.font-sans  { font-family: var(--font-raleway), system-ui, sans-serif; }
+
+/* ── Utility Classes ──────────────────────────────────── */
+@layer components {
+  .section-tag {
+    @apply text-terra text-xs font-bold tracking-[0.22em] uppercase mb-3;
+  }
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl font-light leading-tight;
+  }
+  .section-sub {
+    @apply text-stone text-sm font-light leading-relaxed max-w-md;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold-gradient text-white
+           text-xs font-bold tracking-[0.1em] uppercase
+           rounded-full px-7 py-3.5
+           shadow-[0_4px_20px_rgba(197,150,58,0.35)]
+           transition-all duration-300
+           hover:shadow-[0_8px_32px_rgba(197,150,58,0.55)]
+           hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2
+           border border-white/30 rounded-full text-cream/80
+           text-xs font-bold tracking-[0.1em] uppercase
+           px-7 py-3.5 transition-all duration-300
+           hover:bg-white/10 hover:border-white/60;
+  }
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+}
+
+/* ── Noise Grain Overlay ──────────────────────────────── */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ── Cursor ───────────────────────────────────────────── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], [tabindex] { cursor: none; }
+}
+
+/* ── Loader ───────────────────────────────────────────── */
+.loader-bar-fill { animation: fill 1.6s var(--ease) forwards; }
+@keyframes fill { from { width: 0 } to { width: 100% } }
+
+/* ── Gold shimmer on headings ─────────────────────────── */
+.shimmer-text {
+  background: linear-gradient(105deg, #C97A4A 0%, #E0BC6A 40%, #C97A4A 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { to { background-position: 200% center; } }
+
+/* ── Clip-path image reveal ───────────────────────────── */
+.clip-reveal { clip-path: inset(0 100% 0 0); }
+
+/* ── Marquee ──────────────────────────────────────────── */
+.marquee-track { display: flex; width: max-content; }
+.marquee-inner { animation: marquee 32s linear infinite; display: flex; }
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Gallery masonry ──────────────────────────────────── */
+.masonry {
+  columns: 4;
+  column-gap: 8px;
+}
+@media (max-width: 1024px) { .masonry { columns: 3; } }
+@media (max-width: 640px)  { .masonry { columns: 2; } }
+
+/* ── Custom video player ──────────────────────────────── */
+video::-webkit-media-controls-panel { background: rgba(13,9,6,0.9); }
+video::-webkit-media-controls-play-button { color: #C5963A; }
+
+/* ── Tilt card ────────────────────────────────────────── */
+.tilt-card { transform-style: preserve-3d; will-change: transform; }
+
+/* ── Floating label ───────────────────────────────────── */
+.float-group { position: relative; }
+.float-group input:focus ~ label,
+.float-group input:not(:placeholder-shown) ~ label,
+.float-group textarea:focus ~ label,
+.float-group textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: var(--gold-light);
+}
+.float-group label {
+  @apply absolute left-3 top-3.5 text-sm text-white/40 pointer-events-none;
+  transform-origin: left top;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.float-group input,
+.float-group textarea {
+  @apply w-full bg-white/5 border border-white/10 rounded-lg px-3 py-3.5
+         text-cream text-sm outline-none transition-colors duration-200
+         focus:border-gold/60 placeholder-transparent;
+}

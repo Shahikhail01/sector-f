@@ -1,1 +1,16 @@
+# Vercel
 .vercel
+
+# Next.js
+.next/
+out/
+node_modules/
+
+# Env secrets (keep .env.local.example)
+.env.local
+.env*.local
+
+# Videos in public/ are large – served via Vercel Blob in production
+# Copy them locally with: mkdir -p public/videos && cp *.webm public/videos/
+public/videos/
+
